@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        {% include 'styles.html' %}
+    </head>
+    <body>
+        {% include 'header.html' %}
+        <img class="img-fluid banner" src="/static/images/image.jpg" height="320" />
+        <div class="container mt-5">
+            <div class='row' style='margin-bottom:20px;'>
+                <div>
+                    <h1>{{ job[1] }}</h1>
+                    <h3>Location</h3>
+                    <p class="lead">{{ job[2] }}</p>
+                    {% if job[5] and job[6] %}
+                        <h3>Job Description</h3>
+                        <p class="lead">{{ job[5] }}</p>
+                        <h3>Job Requirements</h3>
+                        <p class="lead">{{ job[6] }}</p>
+                    {% endif %}
+                    <h3>Salary</h3>
+                    <p class="lead">{{ job[4] }} {{ job[3] }}</p>
+                </div>
+            </div>
+
+            {% include 'application_form.html' %}
+
+            {% include 'footer.html' %}
+        </div>
+    </body>
+</html>
+

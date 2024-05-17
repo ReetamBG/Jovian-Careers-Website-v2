@@ -1,16 +1,16 @@
 <div class='border-bottom row' style='margin-bottom:16px; padding-bottom:8px;'>
 	<div class='col-9'>
-  <h4 style='margin-bottom:4px; color:rgb(120,120,120);'>{{i['title']}}</h4>
+  <h4 style='margin-bottom:4px; color:rgb(120,120,120);'>{{i[1]}}</h4>
   <div>
-    <b>Location : {{i['location']}}</b>
+    <b>Location : {{i[2]}}</b>
   </div>
-  {% if 'salary' in i %}
+  {% if i[3]%}
   <div>
-    <b>Salary : {{i['salary']}}</b>
+    <b>Salary : {{i[3]}}</b>
   </div>
   {% endif %}
 </div>
 <div class="col-3">
-  <a href=" mailto:r33t4m@gmail.com?subject=Application%20for%20{{ jobs['title'] }}%20job&body=Name%20%3A%0D%0AEmail%20%3A%0D%0AResume%20%3A%0D%0ALinkedin%20%3A " type='button' class='btn btn-outline-primary'>Apply</a>
+  <a href="job/{{ i[0] }}" type='button' class='btn btn-outline-primary'>Apply</a>
 </div>
 </div>

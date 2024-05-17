@@ -1,0 +1,27 @@
+<form action="/job/{{ job[0] }}/application" method="POST">
+    <label for="name">Full Name</label>
+    <br>
+    <input type="text" name="name" placeholder="Tony Stark">
+    <br>
+    <label for="email">Email</label>
+    <br>
+    <input type="text" name="email" placeholder="stark@gmail.com">
+    <br>
+    <label for="linkedn">Linkedin URL</label>
+    <br>
+    <input type="text" name="linkedin" placeholder="https://linked.com/in/tonystark">
+    <br>
+    <label for="education">Education</label>
+    <br>
+    <textarea name="education"></textarea>
+    <br>
+    <label for="work">Work Experience</label>
+    <br>
+    <textarea name="work"></textarea>
+    <br>
+    <label for="resume">Resume URL</label>
+    <br>
+    <input type="text" name="resume">
+    <br>
+    <button type="submit" class="btn btn-primary mb-4 mt-4">Apply</button>
+</form>

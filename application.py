@@ -1,41 +1,32 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
+from database import dbhelper
 
 app = Flask(__name__)
 
-JOBS =[
-    {
-        'id' : 1,
-        'title' : 'Data Analyst',
-        'location' : 'Bengaluru, India',
-        'salary' : 'Rs 1,00,000'
-    },
-    {
-        'id' : 2,
-        'title' : 'Data Scientist',
-        'location' : 'Delhi, India',
-        'salary' : 'Rs 15,00,000'
-    },
-    {
-        'id' : 3,
-        'title' : 'Frontend Engineer',
-        'location' : 'Remote',
-        # 'salary' : 'Rs 12,00,000'
-    },
-    {
-        'id' : 4,
-        'title' : 'Backend Engineer',
-        'location' : 'San Francisco, USa',
-        'salary' : '$ 120,000'
-    }
-]
-
 @app.route('/')
-def hello_world():
-    return render_template('home.html', jobs = JOBS, company_name='Jovian')
+def home_page():
+    db = dbhelper()
+    job_list = db.fetch_data()
+    return render_template('home.html', jobs=job_list, company_name='Jovian')
 
 @app.route('/api/jobs')
 def list_jobs():
-    return jsonify(JOBS)
+    db = dbhelper()
+    job_list = db.fetch_data()
+    return jsonify(job_list)
+
+@app.route('/job/<id>')
+def job_page(id):
+    db = dbhelper()
+    job_details = db.fetch_job_data(id)
+    return render_template('job_page.html', job=job_details)
+
+@app.route('/job/<id>/application', methods=['POST'])
+def application_request(id):
+    data = request.form
+    db = dbhelper()
+    job_details = db.fetch_job_data(id)
+    return render_template('application_submitted.html', application=data, job=job_details)
 
 
 if __name__ == '__main__':
