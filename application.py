@@ -26,7 +26,11 @@ def application_request(id):
     data = request.form
     db = dbhelper()
     job_details = db.fetch_job_data(id)
+
+    db.submit_application(id, data)
+
     return render_template('application_submitted.html', application=data, job=job_details)
+
 
 
 if __name__ == '__main__':
